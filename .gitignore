@@ -1,0 +1,10 @@
+.pixi/
+build/
+*_cache/
+*_files/
+figures/*.aux
+figures/*.log
+figures/*.dvi
+
+graft/
+.claude/

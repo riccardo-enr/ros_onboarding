@@ -1,0 +1,13 @@
+[workspace]
+name = "ros_onboarding"
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+figs = "python figures/build.py"
+render = { cmd = "latexmk -pdf -interaction=nonstopmode -outdir=build onboarding.tex && cp build/onboarding.pdf docs/", depends-on = ["figs"] }
+docs = "act workflow_dispatch -j convert --bind -P ubuntu-latest=catthehacker/ubuntu:act-latest"
+
+[dependencies]
+python = ">=3.12"
