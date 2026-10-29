@@ -2,7 +2,15 @@ name: docs
 
 # Run locally: act workflow_dispatch -j convert --bind
 # --bind mounts the repo, so the outputs land in docs/.
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [onboarding.tex, pandoc/**, figures/**, docs/**, .github/workflows/docs.yml]
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   convert:
@@ -22,3 +30,28 @@ jobs:
       - run: $PANDOC -s --toc --toc-depth=2 -N --embed-resources --css pandoc/style.css -o docs/index.html
       # the container runs as root; hand the outputs back to the repo owner
       - run: chown -R "$(stat -c %u:%g onboarding.tex)" docs
+      - uses: actions/upload-artifact@v4
+        if: ${{ !env.ACT }}
+        with:
+          name: docs
+          path: docs/
+
+  deploy:
+    needs: convert
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: docs
+          path: docs
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+      - id: deployment
+        uses: actions/deploy-pages@v4
