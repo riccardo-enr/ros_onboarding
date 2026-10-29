@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="$lang$">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>$pagetitle$</title>
+  <style>
+    $styles.html()$
+  </style>
+$for(css)$
+  <link rel="stylesheet" href="$css$" />
+$endfor$
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<a class="site-title" href="index.html">$title$</a>
+<a class="site-pdf" href="onboarding.pdf">PDF version</a>
+$table-of-contents$
+</nav>
+<main>
+$if(top)$
+$else$
+<header id="title-block-header">
+<h1 class="title">$title$</h1>
+$if(subtitle)$
+<p class="subtitle">$subtitle$</p>
+$endif$
+$for(author)$
+<p class="author">$author$</p>
+$endfor$
+$if(abstract)$
+<div class="abstract">$abstract$</div>
+$endif$
+</header>
+$endif$
+$body$
+<nav class="pager">
+$if(previous.url)$
+<a class="prev" href="$previous.url$" rel="prev">&larr; $previous.title$</a>
+$endif$
+$if(next.url)$
+<a class="next" href="$next.url$" rel="next">$next.title$ &rarr;</a>
+$endif$
+</nav>
+</main>
+<script>
+  // open the current chapter in the sidebar; pandoc marks no link as current
+  const page = location.pathname.split("/").pop() || "index.html";
+  for (const a of document.querySelectorAll("#TOC > ul > li > a")) {
+    if (a.getAttribute("href").split("#")[0] === page) a.parentElement.classList.add("current");
+  }
+</script>
+</body>
+</html>

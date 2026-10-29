@@ -16,7 +16,8 @@ local function callout(el)
     return list
   end
   if kind ~= "note" and kind ~= "tip" then
-    return nil
+    -- html drops raw LaTeX anyway; \maketitle left in makes chunkedhtml emit an empty page
+    return not gfm and {} or nil
   end
   local blocks = pandoc.read(inner, "latex").blocks
   if gfm then

@@ -1,6 +1,7 @@
 # UAV Research Onboarding
 
-*Linux, Git, ROS 2, PX4 and Gazebo, for newcomers*
+*Linux, Git, ROS 2, PX4 and Gazebo, for master&rsquo;s thesis students
+at Politecnico di Torino*
 
 This guide teaches the minimum you need to start work in a UAV research
 group. It assumes you have never used Linux, Git, ROS 2, PX4 or Gazebo.
