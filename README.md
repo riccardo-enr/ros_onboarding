@@ -1,8 +1,13 @@
 # ros_onboarding
 
-Onboarding guide for students joining a UAV research group: Linux, Git and
-GitHub, ROS 2, PX4 and Gazebo. One LaTeX source, three outputs.
+Onboarding guide for Politecnico di Torino master's thesis students joining
+the UAV research group: Linux, Git and GitHub, ROS 2, PX4 and Gazebo.
 
+**Start here: <https://riccardo-enr.github.io/ros_onboarding/>**
+
+One LaTeX source, three outputs.
+
+- Website: <https://riccardo-enr.github.io/ros_onboarding/>
 - PDF: [docs/onboarding.pdf](docs/onboarding.pdf)
 - HTML (single page): [docs/index.html](docs/index.html)
 - Markdown, readable on GitHub: [docs/onboarding.md](docs/onboarding.md)
