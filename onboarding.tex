@@ -872,6 +872,37 @@ knowing what it does.
   \texttt{COM\_OBL\_RC\_ACT}).
 \end{itemize}
 
+\subsection{Simulation: SITL and HITL}\label{simulation-sitl-and-hitl}
+
+Test every change in simulation before you fly. PX4 can be simulated
+in two ways:
+
+\begin{itemize}
+\item
+  \textbf{SITL} (software in the loop): the PX4 firmware runs as a
+  program on your PC, next to the simulator. No hardware is needed.
+  Use SITL for almost all your work.
+\item
+  \textbf{HITL} (hardware in the loop): PX4 runs on the real flight
+  controller with its sensors off, and the simulator on your PC sends
+  it simulated sensor data over USB. This tests the real board. In PX4
+  1.17, HITL works only with Gazebo Classic and jMAVSim (not with
+  Gazebo \texttt{gz}), and it is community supported.
+\end{itemize}
+
+Two simulators are used in the group:
+
+\begin{itemize}
+\item
+  \textbf{Gazebo}: officially supported by PX4 and the default. See
+  \hyperref[gazebo]{Gazebo}.
+\item
+  \textbf{Isaac Sim}: not supported by PX4 directly. It runs PX4 SITL
+  through \href{https://pegasussimulator.github.io/PegasusSimulator/}{Pegasus
+  Simulator}, a community extension for multirotors. The Pegasus docs
+  use PX4 1.14.3, not 1.17. See \hyperref[isaac-sim]{Isaac Sim}.
+\end{itemize}
+
 \section{Gazebo}\label{gazebo}
 
 SITL (software in the loop) runs the real PX4 firmware as a program on
@@ -1036,6 +1067,12 @@ yours.
 \item
   PX4 Gazebo simulation:
   \href{https://docs.px4.io/main/en/sim_gazebo_gz/}{docs.px4.io/main/en/sim\_gazebo\_gz/}
+\item
+  PX4 simulation (SITL and HITL):
+  \href{https://docs.px4.io/v1.17/en/simulation/}{docs.px4.io/v1.17/en/simulation/}
+\item
+  Pegasus Simulator (PX4 in Isaac Sim):
+  \href{https://pegasussimulator.github.io/PegasusSimulator/}{pegasussimulator.github.io/PegasusSimulator/}
 \item
   Isaac Sim requirements:
   \href{https://docs.isaacsim.omniverse.nvidia.com/latest/installation/requirements.html}{docs.isaacsim.omniverse.nvidia.com/latest/installation/requirements.html}
