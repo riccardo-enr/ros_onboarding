@@ -15,17 +15,20 @@ local function callout(el)
     end
     return list
   end
-  if kind ~= "note" and kind ~= "tip" then
+  local labels = { note = "Note", tip = "Tip", wip = "Work in progress" }
+  if not labels[kind] then
     -- html drops raw LaTeX anyway; \maketitle left in makes chunkedhtml emit an empty page
     return not gfm and {} or nil
   end
   local blocks = pandoc.read(inner, "latex").blocks
   if gfm then
-    blocks[1].content:insert(1, pandoc.RawInline("markdown", "[!" .. kind:upper() .. "]"))
+    -- GitHub has no WIP alert; WARNING is its yellow one
+    local alert = kind == "wip" and "WARNING" or kind:upper()
+    blocks[1].content:insert(1, pandoc.RawInline("markdown", "[!" .. alert .. "]"))
     blocks[1].content:insert(2, pandoc.LineBreak())
     return pandoc.BlockQuote(blocks)
   end
-  blocks:insert(1, pandoc.Para(pandoc.Strong(kind:sub(1, 1):upper() .. kind:sub(2))))
+  blocks:insert(1, pandoc.Para(pandoc.Strong(labels[kind])))
   return pandoc.Div(blocks, { class = "callout callout-" .. kind })
 end
 

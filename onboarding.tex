@@ -41,6 +41,9 @@
 \newtcolorbox{tip}{enhanced, breakable, colback=white, colframe=green!60!black,
   leftrule=0.75mm, toprule=0.15mm, rightrule=0.15mm, bottomrule=0.15mm,
   arc=0.35mm, title={Tip}, coltitle=black, colbacktitle=green!8}
+\newtcolorbox{wip}{enhanced, breakable, colback=white, colframe=yellow!80!black,
+  leftrule=0.75mm, toprule=0.15mm, rightrule=0.15mm, bottomrule=0.15mm,
+  arc=0.35mm, title={Work in progress}, coltitle=black, colbacktitle=yellow!25}
 
 \title{UAV Research Onboarding\\[0.5ex]
   \large Linux, Git, ROS 2, PX4 and Gazebo, for master's thesis students at
@@ -902,10 +905,17 @@ knowing what it does.
 
 \section{Isaac Sim}\label{isaac-sim}
 
-Isaac Sim is NVIDIA's robot simulator. It renders photorealistic
-cameras and simulates physics on the GPU, so it is used for perception
-and learning work where Gazebo images are not realistic enough. It
-connects to ROS 2 through its own ROS 2 bridge.
+\begin{wip}
+This section is a first draft. Install steps and examples will be added
+once the group's Isaac Sim setup is decided.
+\end{wip}
+
+Gazebo and Isaac Sim are both simulators, used for different tasks.
+Gazebo is the default simulator for PX4 and the one this guide uses
+(\hyperref[simulation-sitl-with-gazebo]{Simulation: SITL with Gazebo}).
+Isaac Sim is NVIDIA's simulator: it renders photorealistic cameras, so
+it is better for computer vision tasks, but it requires an NVIDIA GPU.
+It connects to ROS 2 through its own ROS 2 bridge.
 
 It needs much more hardware than Gazebo. The current NVIDIA
 requirements are Ubuntu 24.04 (22.04 is deprecated), an NVIDIA RTX GPU
@@ -914,9 +924,10 @@ cores do not work. Check the requirements page for the version you
 install.
 
 \begin{note}
-Do not install Isaac Sim on your own. Your supervisor tells you which
-version to use, on which machine, and which parts (ROS 2 bridge, Isaac
-Lab, PX4 SITL) to check out first.
+Talk to your supervisor before you install it. They will suggest a
+version, a machine to run it on, and where to start (the ROS 2 bridge,
+Isaac Lab or PX4 SITL). It is a large install, and the version should
+match the rest of the group's setup.
 \end{note}
 
 \section{How it fits together}\label{how-it-fits-together}

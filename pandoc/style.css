@@ -114,6 +114,8 @@ figcaption { font-size: 0.9em; color: var(--gunmetal); margin-top: 0.5rem; }
 .callout-note { border-color: var(--blue-slate); background: rgba(74, 90, 117, 0.07); }
 .callout-tip { border-color: var(--autumn-leaf); background: rgba(242, 163, 101, 0.12); }
 .callout-tip > p:first-child strong { color: var(--autumn-leaf); }
+.callout-wip { border-color: #d4a017; background: rgba(240, 200, 40, 0.15); }
+.callout-wip > p:first-child strong { color: #9a7300; }
 
 nav#TOC {
   position: sticky;
