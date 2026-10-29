@@ -827,37 +827,6 @@ before publishing. An acceleration setpoint is a world-frame
 acceleration, so the same \(x\leftrightarrow y\), \(z\to-z\) rule
 applies to it.
 
-\subsection{Simulation: SITL with
-Gazebo}\label{simulation-sitl-with-gazebo}
-
-SITL (software in the loop) runs the real PX4 firmware as a program on
-your PC, with Gazebo (\texttt{gz}) simulating the drone and the world.
-You need your own PX4-Autopilot checkout in
-\texttt{\textasciitilde{}/PX4-Autopilot}, at tag \texttt{v1.17.0} (not
-part of your project repo; see
-\hyperref[installing-the-other-tools]{Installing the other tools}). The make targets from the PX4 docs are:
-
-\begin{lstlisting}[language=bash]
-cd ~/PX4-Autopilot        # path is machine-specific
-make px4_sitl gz_x500                 # plain x500 quadrotor
-make px4_sitl gz_x500_depth           # x500 with a front depth camera
-make px4_sitl gz_x500_lidar_2d        # x500 with a 2D LiDAR
-\end{lstlisting}
-
-These three targets are listed in the PX4 Gazebo page (main
-documentation). A world is chosen by appending its name to the target or
-with the environment variable \texttt{PX4\_GZ\_WORLD}. The first build
-takes several minutes. Simulated sensor images and point clouds reach
-ROS 2 through a Gazebo-ROS bridge (package \texttt{ros\_gz\_bridge});
-the topic names depend on the model.
-
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.85\linewidth]{figures/web/gazebo_x500_sitl.png}
-\caption{Gazebo with the x500 quadrotor, as started by \texttt{make px4\_sitl gz\_x500}. Image: PX4 User Guide, CC BY 4.0.}
-\end{figure}
-
 \subsection{QGroundControl, parameters and
 safety}\label{qgroundcontrol-parameters-and-safety}
 
@@ -903,6 +872,36 @@ knowing what it does.
   \texttt{COM\_OBL\_RC\_ACT}).
 \end{itemize}
 
+\section{Gazebo}\label{gazebo}
+
+SITL (software in the loop) runs the real PX4 firmware as a program on
+your PC, with Gazebo (\texttt{gz}) simulating the drone and the world.
+You need your own PX4-Autopilot checkout in
+\texttt{\textasciitilde{}/PX4-Autopilot}, at tag \texttt{v1.17.0} (not
+part of your project repo; see
+\hyperref[installing-the-other-tools]{Installing the other tools}). The make targets from the PX4 docs are:
+
+\begin{lstlisting}[language=bash]
+cd ~/PX4-Autopilot        # path is machine-specific
+make px4_sitl gz_x500                 # plain x500 quadrotor
+make px4_sitl gz_x500_depth           # x500 with a front depth camera
+make px4_sitl gz_x500_lidar_2d        # x500 with a 2D LiDAR
+\end{lstlisting}
+
+These three targets are listed in the PX4 Gazebo page (main
+documentation). A world is chosen by appending its name to the target or
+with the environment variable \texttt{PX4\_GZ\_WORLD}. The first build
+takes several minutes. Simulated sensor images and point clouds reach
+ROS 2 through a Gazebo-ROS bridge (package \texttt{ros\_gz\_bridge});
+the topic names depend on the model.
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\linewidth]{figures/web/gazebo_x500_sitl.png}
+\caption{Gazebo with the x500 quadrotor, as started by \texttt{make px4\_sitl gz\_x500}. Image: PX4 User Guide, CC BY 4.0.}
+\end{figure}
+
 \section{Isaac Sim}\label{isaac-sim}
 
 \begin{wip}
@@ -912,7 +911,7 @@ once the group's Isaac Sim setup is decided.
 
 Gazebo and Isaac Sim are both simulators, used for different tasks.
 Gazebo is the default simulator for PX4 and the one this guide uses
-(\hyperref[simulation-sitl-with-gazebo]{Simulation: SITL with Gazebo}).
+(\hyperref[gazebo]{Gazebo}).
 Isaac Sim is NVIDIA's simulator: it renders photorealistic cameras, so
 it is better for computer vision tasks, but it requires an NVIDIA GPU.
 It connects to ROS 2 through its own ROS 2 bridge.
