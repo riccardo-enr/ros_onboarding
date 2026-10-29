@@ -872,7 +872,7 @@ knowing what it does.
   \texttt{COM\_OBL\_RC\_ACT}).
 \end{itemize}
 
-\subsection{Simulation: SITL and HITL}\label{simulation-sitl-and-hitl}
+\subsection{Simulation: SITL and PIL}\label{simulation-sitl-and-pil}
 
 Test every change in simulation before you fly. PX4 can be simulated
 in two ways:
@@ -883,10 +883,11 @@ in two ways:
   program on your PC, next to the simulator. No hardware is needed.
   Use SITL for almost all your work.
 \item
-  \textbf{HITL} (hardware in the loop): PX4 runs on the real flight
-  controller with its sensors off, and the simulator on your PC sends
-  it simulated sensor data over USB. This tests the real board. In PX4
-  1.17, HITL works only with Gazebo Classic and jMAVSim (not with
+  \textbf{PIL} (processor in the loop; PX4 calls it HITL): PX4 runs on
+  the real flight controller with its sensors off, and the simulator on
+  your PC sends it simulated sensor data over USB. Only the processor is
+  real, so this tests the firmware on the real board. In PX4 1.17, it
+  works only with Gazebo Classic and jMAVSim (not with
   Gazebo \texttt{gz}), and it is community supported.
 \end{itemize}
 
@@ -1068,7 +1069,7 @@ yours.
   PX4 Gazebo simulation:
   \href{https://docs.px4.io/main/en/sim_gazebo_gz/}{docs.px4.io/main/en/sim\_gazebo\_gz/}
 \item
-  PX4 simulation (SITL and HITL):
+  PX4 simulation (SITL and HITL, here PIL):
   \href{https://docs.px4.io/v1.17/en/simulation/}{docs.px4.io/v1.17/en/simulation/}
 \item
   Pegasus Simulator (PX4 in Isaac Sim):
