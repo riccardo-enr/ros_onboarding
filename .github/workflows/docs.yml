@@ -1,0 +1,24 @@
+name: docs
+
+# Run locally: act workflow_dispatch -j convert --bind
+# --bind mounts the repo, so the outputs land in docs/.
+on: workflow_dispatch
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    container: pandoc/core:3.6
+    defaults:
+      run:
+        shell: sh
+    env:
+      PANDOC: pandoc onboarding.tex -f latex+raw_tex --ascii --lua-filter pandoc/callouts.lua
+    steps:
+      # Alpine has no glibc node for actions/checkout; act provides the repo itself
+      - uses: actions/checkout@v4
+        if: ${{ !env.ACT }}
+      - run: mkdir -p docs
+      - run: $PANDOC -t gfm -o docs/onboarding.md
+      - run: $PANDOC -s --toc --toc-depth=2 -N --embed-resources --css pandoc/style.css -o docs/index.html
+      # the container runs as root; hand the outputs back to the repo owner
+      - run: chown -R "$(stat -c %u:%g onboarding.tex)" docs
