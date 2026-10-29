@@ -54,8 +54,8 @@
 This guide teaches the minimum you need to start work in a UAV research
 group. It assumes you have never used Linux, Git, ROS 2, PX4 or Gazebo.
 It covers only the tools a typical group uses: Ubuntu,
-ROS 2, PX4 firmware with Gazebo simulation, and a ground station. Isaac
-Sim will be added in a later version. Read it once, then use the
+ROS 2, PX4 firmware with Gazebo simulation, Isaac Sim, and a ground
+station. Read it once, then use the
 \hyperref[first-day-checklist]{First-day checklist} on your first day.
 \end{abstract}
 
@@ -83,6 +83,7 @@ script \\
 Micro XRCE-DDS Agent & as installed in the lab &
 \texttt{MicroXRCEAgent} \\
 QGroundControl & current stable & ground station \\
+Isaac Sim & ask your supervisor & see \hyperref[isaac-sim]{Isaac Sim} \\
 \bottomrule
 \end{longtable}
 
@@ -899,6 +900,25 @@ knowing what it does.
   \texttt{COM\_OBL\_RC\_ACT}).
 \end{itemize}
 
+\section{Isaac Sim}\label{isaac-sim}
+
+Isaac Sim is NVIDIA's robot simulator. It renders photorealistic
+cameras and simulates physics on the GPU, so it is used for perception
+and learning work where Gazebo images are not realistic enough. It
+connects to ROS 2 through its own ROS 2 bridge.
+
+It needs much more hardware than Gazebo. The current NVIDIA
+requirements are Ubuntu 24.04 (22.04 is deprecated), an NVIDIA RTX GPU
+(minimum GeForce RTX 4080, 16 GB VRAM) and 32 GB RAM. GPUs without RT
+cores do not work. Check the requirements page for the version you
+install.
+
+\begin{note}
+Do not install Isaac Sim on your own. Your supervisor tells you which
+version to use, on which machine, and which parts (ROS 2 bridge, Isaac
+Lab, PX4 SITL) to check out first.
+\end{note}
+
 \section{How it fits together}\label{how-it-fits-together}
 
 \begin{figure}[htbp]
@@ -1006,6 +1026,9 @@ yours.
 \item
   PX4 Gazebo simulation:
   \href{https://docs.px4.io/main/en/sim_gazebo_gz/}{docs.px4.io/main/en/sim\_gazebo\_gz/}
+\item
+  Isaac Sim requirements:
+  \href{https://docs.isaacsim.omniverse.nvidia.com/latest/installation/requirements.html}{docs.isaacsim.omniverse.nvidia.com/latest/installation/requirements.html}
 \item
   Message definitions:
   \href{https://github.com/PX4/px4_msgs}{github.com/PX4/px4\_msgs}
