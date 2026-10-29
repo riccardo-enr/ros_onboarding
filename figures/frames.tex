@@ -1,0 +1,22 @@
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usetikzlibrary{arrows.meta}
+\begin{document}
+\begin{tikzpicture}[>={Latex},ax/.style={->,thick},every node/.style={font=\small}]
+\begin{scope}
+\draw[ax] (0,0) -- (2.2,0) node[right] {$x$ East};
+\draw[ax] (0,0) -- (0,2.2) node[above] {$y$ North};
+\draw[ax,dashed] (0,0) -- (-1.1,-1.1) node[below left] {$z$ Up (to viewer)};
+\fill (0,0) circle (1.5pt);
+\node at (0.2,-2.2) {\textbf{ROS: ENU} (world)};
+\end{scope}
+\begin{scope}[xshift=7.6cm]
+\draw[ax] (0,0) -- (0,2.2) node[above] {$x$ North};
+\draw[ax] (0,0) -- (2.2,0) node[right] {$y$ East};
+\draw[ax,dashed] (0,0) -- (-1.1,-1.1) node[below left] {$z$ Down (from viewer)};
+\fill (0,0) circle (1.5pt);
+\node at (0.2,-2.2) {\textbf{PX4: NED} (world)};
+\end{scope}
+\end{tikzpicture}
+\end{document}
