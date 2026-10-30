@@ -162,7 +162,7 @@ Use what you like. Recommended editors:
 - [VS Code](https://code.visualstudio.com): the most used in the group.
   Its &ldquo;Remote - SSH&rdquo; extension edits files on the drone.
 
-- [Zed](https://zed.dev): built in Rust, faster.
+- [Zed](https://zed.dev): built in [Rust](https://www.rust-lang.org), faster.
 
 - [Neovim](https://neovim.io): not beginner friendly.
 
